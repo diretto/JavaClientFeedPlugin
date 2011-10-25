@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+	<xs:element name="config">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="name" type="xs:string" />
+				<xs:element name="api-version" type="xs:string" />
+				<xs:element name="service-class" type="xs:string" />
+				<xs:element name="core-service-cache">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="preload-new-documents" type="xs:boolean" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="pubsubhubbub">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="subscriber-network-settings">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="automation-page" type="xs:string" />
+										<xs:element name="port-number" type="xs:int" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="hub-failure-fallback" type="xs:boolean" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="feeds" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="feeds">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="feed" minOccurs="1" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="name" type="xs:string" use="required" />
+						<xs:attribute name="url" type="xs:anyURI" use="required" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

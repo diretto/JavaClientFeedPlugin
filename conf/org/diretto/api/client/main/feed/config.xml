@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="config.xsd">
+
+	<name>org.diretto.api.main.feed</name>
+	<api-version>v2</api-version>
+	<service-class>org.diretto.api.client.main.feed.FeedServiceImpl</service-class>
+
+	<core-service-cache>
+		<preload-new-documents>true</preload-new-documents>
+	</core-service-cache>
+
+	<pubsubhubbub>
+		
+		<subscriber-network-settings>
+			<automation-page>http://automation.whatismyip.com/n09230945.asp</automation-page>
+			<port-number>8084</port-number>
+		</subscriber-network-settings>
+		
+		<hub-failure-fallback>true</hub-failure-fallback>
+		
+	</pubsubhubbub>
+
+	<feeds>
+		<feed name="documentFeed" url="/feed/documents" />
+		<feed name="attachmentFeed" url="/feed/attachments" />
+		<feed name="commentFeed" url="/feed/comments" />
+	</feeds>
+	
+</config>
